@@ -27,6 +27,7 @@ php artisan serve
 1. Crear compañía  
 
 **Metodo:** POST 
+
 **Endpoint:** /api/companies 
 
 **Headers:**  
@@ -64,7 +65,9 @@ php artisan serve
 2. Modificar compañía
 
 **Metodo:** PUT
+
 **Endpoint:** /api/companies/{id}
+
 **Headers:**  
 
 | Key | Value |
@@ -102,7 +105,9 @@ php artisan serve
 3. Eliminar compañía
 
 **Metodo:** DELETE
+
 **Endpoint:** /api/companies/{id}
+
 **Headers:**  
 
 | Key | Value |
@@ -122,7 +127,9 @@ php artisan serve
 4. Mostrar compañías
 
 **Metodo:** GET
+
 **Endpoint:** /api/companies
+
 **Headers:**  
 
 | Key | Value |
@@ -159,7 +166,9 @@ php artisan serve
  5. Crear persona  
 
 **Metodo:** POST 
+
 **Endpoint:** /api/people
+
 **Headers:**  
 
 | Key | Value |
@@ -197,7 +206,9 @@ php artisan serve
 6. Modificar persona 
 
 **Metodo:** PUT
+
 **Endpoint:** /api/people/{id}
+
 **Headers:**  
 
 | Key | Value |
@@ -236,7 +247,9 @@ php artisan serve
 7. Eliminar persona
 
 **Metodo:** DELETE
+
 **Endpoint:** /api/people/{id}
+
 **Headers:**  
 
 | Key | Value |
@@ -256,7 +269,9 @@ php artisan serve
 8. Mostrar personas
 
 **Metodo:** GET
+
 **Endpoint:** /api/people
+
 **Headers:**  
 
 | Key | Value |
@@ -302,7 +317,9 @@ php artisan serve
 9. Crear cargo  
 
 **Metodo:** POST 
+
 **Endpoint:** /api/positions
+
 **Headers:**  
 
 | Key | Value |
@@ -340,7 +357,9 @@ php artisan serve
 10. Modificar cargo
 
 **Metodo:** PUT
+
 **Endpoint:** /api/positions/{id}
+
 **Headers:**  
 
 | Key | Value |
@@ -381,7 +400,9 @@ php artisan serve
 11. Eliminar cargo
 
 **Metodo:** DELETE
+
 **Endpoint:** /api/positions/{id}
+
 **Headers:**  
 
 | Key | Value |
@@ -401,7 +422,9 @@ php artisan serve
 12. Mostrar cargos
 
 **Metodo:** GET
+
 **Endpoint:** /api/positions
+
 **Headers:**  
 
 | Key | Value |
@@ -499,7 +522,9 @@ php artisan serve
  13. Mostrar cargos disponibles
 
 **Metodo:** GET
+
 **Endpoint:** /api/available-positions
+
 **Headers:**  
 
 | Key | Value |
@@ -578,7 +603,9 @@ php artisan serve
  14. Mostrar cargos disponibles
 
 **Metodo:** GET
+
 **Endpoint:** /api/available-positions?role={role}
+
 **Headers:**  
 
 | Key | Value |
