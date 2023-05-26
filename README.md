@@ -1,66 +1,674 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Pre-requisitos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+- MySQL 5.7 o superior
+- PHP 8.0 o superior
+- Composer
+- Nodejs v18 o superior
 
-## About Laravel
+## Instalación
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Instalación de dependencias Servidor
+```
+composer install
+```  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Instalación de dependencias Cliente (Opcional)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
+npm install && npm run dev
+```  
 
-## Learning Laravel
+- Ejecución  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+php artisan serve
+```  
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Crear compañía  
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Metodo:** POST 
 
-## Laravel Sponsors
+**Endpoint:** /api/companies 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Headers:**  
 
-### Premium Partners
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+**Request Body:**  
 
-## Contributing
+```
+{
+    "name": "Frutiverduras La Hacienda",
+    "address": "Cra. 25 # 32 - 26, Girardota",
+    "zip_code": "051030"
+}
+```  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Response Body:**  
 
-## Code of Conduct
+```
+{
+    "message": "The company has been created.",
+    "company": {
+        "name": "Frutiverduras La Hacienda",
+        "address": "Cra. 25 # 32 - 26, Girardota",
+        "zip_code": "051030",
+        "updated_at": "2023-05-26T19:21:55.000000Z",
+        "created_at": "2023-05-26T19:21:55.000000Z",
+        "id": 4
+    }
+}
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. Modificar compañía
 
-## Security Vulnerabilities
+**Metodo:** PUT
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Endpoint:** /api/companies/{id}
 
-## License
+**Headers:**  
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+
+**Request Body:**  
+
+```
+{
+    "name": "Frutiverduras La Hacienda",
+    "address": "Cra. 60 # 25 - 33, Bogotá",
+    "zip_code": "051030"
+}
+```  
+
+**Response Body:**  
+
+```
+{
+    "message": "The company has been modified.",
+    "company": {
+        "id": 4,
+        "name": "Frutiverduras La Hacienda",
+        "address": "Cra. 60 # 25 - 33, Bogotá",
+        "zip_code": "051030",
+        "positions_available": 0,
+        "created_at": "2023-05-26T19:21:55.000000Z",
+        "updated_at": "2023-05-26T19:25:00.000000Z"
+    }
+}
+```  
+
+3. Eliminar compañía
+
+**Metodo:** DELETE
+
+**Endpoint:** /api/companies/{id}
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+```  
+
+**Response Body:**  
+
+```
+
+{
+    "message": "The company has been deleted."
+}
+
+4. Mostrar compañías
+
+**Metodo:** GET
+
+**Endpoint:** /api/companies
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+```  
+
+**Response Body:**  
+
+```
+
+     {
+        "id": 1,
+        "name": "La huerta",
+        "address": "Cra 23a # 34 - 15",
+        "zip_code": "133475689",
+        "positions_available": -3,
+        "created_at": "2023-05-24T19:44:47.000000Z",
+        "updated_at": "2023-05-26T18:45:40.000000Z"
+    },
+    {
+        "id": 3,
+        "name": "Finca La Tesorería",
+        "address": "Calle 33 # 21 -55",
+        "zip_code": "122222222",
+        "positions_available": -1,
+        "created_at": "2023-05-25T22:31:25.000000Z",
+        "updated_at": "2023-05-26T17:59:47.000000Z"
+    }
+ 
+ 5. Crear persona  
+
+**Metodo:** POST 
+
+**Endpoint:** /api/people
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+**Request Body:**  
+
+```
+{
+    "name": "José Fernandez Alvarado",
+    "birth_date": "1998/07/12",
+    "education_level": "High School",
+    "client_recorded_date": "2023/03/21"
+}
+```  
+
+**Response Body:**  
+
+```
+{
+    "message": "The person has been created.",
+    "person": {
+        "name": "José Fernandez Alvarado",
+        "birth_date": "1998/07/12",
+        "education_level": "High School",
+        "client_recorded_date": "2023/03/21",
+        "updated_at": "2023-05-26T19:46:19.000000Z",
+        "created_at": "2023-05-26T19:46:19.000000Z",
+        "id": 5
+    }
+}
+```
+
+6. Modificar persona 
+
+**Metodo:** PUT
+
+**Endpoint:** /api/people/{id}
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+
+**Request Body:**  
+
+```
+{
+    "name": "José Fernandez Alvarado",
+    "birth_date": "1998/07/12",
+    "education_level": "Elementary School",
+    "client_recorded_date": "2023/03/21"
+}
+```  
+
+**Response Body:**  
+
+```
+{
+    "message": "The person has been modified.",
+    "person": {
+        "id": 5,
+        "name": "José Fernandez Alvarado",
+        "birth_date": "1998/07/12",
+        "education_level": "Elementary School",
+        "client_recorded_date": "2023/03/21",
+        "created_at": "2023-05-26T19:46:19.000000Z",
+        "updated_at": "2023-05-26T19:48:57.000000Z"
+    }
+}
+```  
+
+7. Eliminar persona
+
+**Metodo:** DELETE
+
+**Endpoint:** /api/people/{id}
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+```  
+
+**Response Body:**  
+
+```
+
+    {
+        "message": "The person has been deleted."
+    }
+
+8. Mostrar personas
+
+**Metodo:** GET
+
+**Endpoint:** /api/people
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+```  
+
+**Response Body:**  
+
+```
+
+    {
+        "id": 1,
+        "name": "Jose Alvarez",
+        "birth_date": "1995-08-14",
+        "education_level": "High school",
+        "client_recorded_date": "2023-02-13",
+        "created_at": "2023-05-24T20:16:26.000000Z",
+        "updated_at": "2023-05-24T20:16:26.000000Z"
+    },
+    {
+        "id": 2,
+        "name": "Andrés Darío Rentería Moreno",
+        "birth_date": "1993-10-14",
+        "education_level": "University",
+        "client_recorded_date": "2023-01-21",
+        "created_at": "2023-05-24T20:17:08.000000Z",
+        "updated_at": "2023-05-24T20:19:25.000000Z"
+    },
+    {
+        "id": 4,
+        "name": "Luis Ignacio Da Silva",
+        "birth_date": "1982-05-28",
+        "education_level": "High School",
+        "client_recorded_date": "2023-01-01",
+        "created_at": "2023-05-25T22:53:18.000000Z",
+        "updated_at": "2023-05-25T22:53:18.000000Z"
+    }
+
+9. Crear cargo  
+
+**Metodo:** POST 
+
+**Endpoint:** /api/positions
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+**Request Body:**  
+
+```
+{
+    "role": "Human resource manager",
+    "experience_required": 5,
+    "salary": "5000",
+    "company_id": 3
+}
+```  
+
+**Response Body:**  
+
+```
+{
+    "message": "The position has been created.",
+    "position": {
+        "role": "Human resource manager",
+        "experience_required": 5,
+        "salary": "5000",
+        "company_id": 3,
+        "updated_at": "2023-05-26T19:59:35.000000Z",
+        "created_at": "2023-05-26T19:59:35.000000Z",
+        "id": 11
+    }
+}
+```
+
+10. Modificar cargo
+
+**Metodo:** PUT
+
+**Endpoint:** /api/positions/{id}
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+
+**Request Body:**  
+
+```
+{
+    "role": "Human resource manager",
+    "experience_required": 8,
+    "salary": "5200",
+    "company_id": 3
+}
+```  
+
+**Response Body:**  
+
+```
+{
+    "message": "The position has been modified.",
+    "position": {
+        "id": 11,
+        "role": "Human resource manager",
+        "experience_required": 8,
+        "salary": "5200",
+        "company_id": 3,
+        "person_id": null,
+        "available": 1,
+        "created_at": "2023-05-26T19:59:35.000000Z",
+        "updated_at": "2023-05-26T20:00:39.000000Z"
+    }
+}
+```  
+
+11. Eliminar cargo
+
+**Metodo:** DELETE
+
+**Endpoint:** /api/positions/{id}
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+```  
+
+**Response Body:**  
+
+```
+
+{
+    "message": "The position has been deleted."
+}
+
+12. Mostrar cargos
+
+**Metodo:** GET
+
+**Endpoint:** /api/positions
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+```  
+
+**Response Body:**  
+
+```
+
+     {
+        "id": 2,
+        "role": "Accountance",
+        "experience_required": 3,
+        "salary": 2000,
+        "company_id": 1,
+        "person_id": null,
+        "available": 0,
+        "created_at": "2023-05-26T13:58:02.000000Z",
+        "updated_at": "2023-05-26T13:58:02.000000Z",
+        "company": {
+            "id": 1,
+            "name": "La huerta",
+            "address": "Cra 23a # 34 - 15",
+            "zip_code": "133475689",
+            "positions_available": -3,
+            "created_at": "2023-05-24T19:44:47.000000Z",
+            "updated_at": "2023-05-26T18:45:40.000000Z"
+        },
+        "person": null
+    },
+    {
+        "id": 3,
+        "role": "Accountance",
+        "experience_required": 3,
+        "salary": 2000,
+        "company_id": 1,
+        "person_id": 1,
+        "available": 0,
+        "created_at": "2023-05-26T13:58:04.000000Z",
+        "updated_at": "2023-05-26T16:56:51.000000Z",
+        "company": {
+            "id": 1,
+            "name": "La huerta",
+            "address": "Cra 23a # 34 - 15",
+            "zip_code": "133475689",
+            "positions_available": -3,
+            "created_at": "2023-05-24T19:44:47.000000Z",
+            "updated_at": "2023-05-26T18:45:40.000000Z"
+        },
+        "person": {
+            "id": 1,
+            "name": "Jose Alvarez",
+            "birth_date": "1995-08-14",
+            "education_level": "High school",
+            "client_recorded_date": "2023-02-13",
+            "created_at": "2023-05-24T20:16:26.000000Z",
+            "updated_at": "2023-05-24T20:16:26.000000Z"
+        }
+    },
+    {
+        "id": 4,
+        "role": "Manager",
+        "experience_required": 5,
+        "salary": 3000,
+        "company_id": 3,
+        "person_id": 2,
+        "available": 0,
+        "created_at": "2023-05-26T16:58:32.000000Z",
+        "updated_at": "2023-05-26T16:59:25.000000Z",
+        "company": {
+            "id": 3,
+            "name": "Finca La Tesorería",
+            "address": "Calle 33 # 21 -55",
+            "zip_code": "122222222",
+            "positions_available": -1,
+            "created_at": "2023-05-25T22:31:25.000000Z",
+            "updated_at": "2023-05-26T20:01:24.000000Z"
+        },
+        "person": {
+            "id": 2,
+            "name": "Andrés Darío Rentería Moreno",
+            "birth_date": "1993-10-14",
+            "education_level": "University",
+            "client_recorded_date": "2023-01-21",
+            "created_at": "2023-05-24T20:17:08.000000Z",
+            "updated_at": "2023-05-24T20:19:25.000000Z"
+        }
+    }
+ 
+ 13. Mostrar cargos disponibles
+
+**Metodo:** GET
+
+**Endpoint:** /api/available-positions
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+```  
+
+**Response Body:**  
+
+```
+
+     {
+        "id": 6,
+        "role": "Executive manager",
+        "experience_required": 10,
+        "salary": 20000,
+        "company_id": 3,
+        "person_id": null,
+        "available": 1,
+        "created_at": "2023-05-26T17:09:50.000000Z",
+        "updated_at": "2023-05-26T17:09:50.000000Z",
+        "company": {
+            "id": 3,
+            "name": "Finca La Tesorería",
+            "address": "Calle 33 # 21 -55",
+            "zip_code": "122222222",
+            "positions_available": -1,
+            "created_at": "2023-05-25T22:31:25.000000Z",
+            "updated_at": "2023-05-26T20:01:24.000000Z"
+        }
+    },
+    {
+        "id": 7,
+        "role": "Secretary",
+        "experience_required": 3,
+        "salary": 1000,
+        "company_id": 3,
+        "person_id": 2,
+        "available": 1,
+        "created_at": "2023-05-26T17:10:13.000000Z",
+        "updated_at": "2023-05-26T17:59:16.000000Z",
+        "company": {
+            "id": 3,
+            "name": "Finca La Tesorería",
+            "address": "Calle 33 # 21 -55",
+            "zip_code": "122222222",
+            "positions_available": -1,
+            "created_at": "2023-05-25T22:31:25.000000Z",
+            "updated_at": "2023-05-26T20:01:24.000000Z"
+        }
+    },
+    {
+        "id": 10,
+        "role": "Farmer",
+        "experience_required": 2,
+        "salary": 1500,
+        "company_id": 3,
+        "person_id": 1,
+        "available": 1,
+        "created_at": "2023-05-26T17:12:08.000000Z",
+        "updated_at": "2023-05-26T17:59:47.000000Z",
+        "company": {
+            "id": 3,
+            "name": "Finca La Tesorería",
+            "address": "Calle 33 # 21 -55",
+            "zip_code": "122222222",
+            "positions_available": -1,
+            "created_at": "2023-05-25T22:31:25.000000Z",
+            "updated_at": "2023-05-26T20:01:24.000000Z"
+        }
+    }
+ 
+ 14. Mostrar cargos disponibles
+
+**Metodo:** GET
+
+**Endpoint:** /api/available-positions?role={role}
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+```  
+
+**Response Body:**  
+
+```
+
+    {
+        "id": 7,
+        "role": "Secretary",
+        "experience_required": 3,
+        "salary": 1000,
+        "company_id": 3,
+        "person_id": 2,
+        "available": 1,
+        "created_at": "2023-05-26T17:10:13.000000Z",
+        "updated_at": "2023-05-26T17:59:16.000000Z",
+        "company": {
+            "id": 3,
+            "name": "Finca La Tesorería",
+            "address": "Calle 33 # 21 -55",
+            "zip_code": "122222222",
+            "positions_available": -1,
+            "created_at": "2023-05-25T22:31:25.000000Z",
+            "updated_at": "2023-05-26T20:01:24.000000Z"
+        }
+    }
+    
+15. Asignar persona al cargo
+
+**Metodo:** PATCH
+
+**Endpoint:** /api/set-person-positions
+
+**Headers:**  
+
+| Key | Value |
+| --- | --- |
+| Content-Type | application/json |
+
+```  
+
+**Request Body:**  
+
+```
+    {
+        "id": 6,
+        "person_id": 2
+    }
+```  
+
+**Response Body:**  
+
+```
+    {
+        "message": "The position has been modified.",
+        "position": {
+            "id": 6,
+            "role": "Executive manager",
+            "experience_required": 10,
+            "salary": 20000,
+            "company_id": 3,
+            "person_id": 2,
+            "available": false,
+            "created_at": "2023-05-26T17:09:50.000000Z",
+            "updated_at": "2023-05-26T20:37:34.000000Z"
+        }
+    }
+```  
