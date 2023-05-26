@@ -260,9 +260,9 @@ php artisan serve
 
 ```
 
-{
-    "message": "The person has been deleted."
-}
+    {
+        "message": "The person has been deleted."
+    }
 
 8. Mostrar personas
 
@@ -648,27 +648,27 @@ php artisan serve
 **Request Body:**  
 
 ```
-{
-    "id": 6,
-    "person_id": 2
-}
+    {
+        "id": 6,
+        "person_id": 2
+    }
 ```  
 
 **Response Body:**  
 
 ```
-{
-    "message": "The position has been modified.",
-    "position": {
-        "id": 6,
-        "role": "Executive manager",
-        "experience_required": 10,
-        "salary": 20000,
-        "company_id": 3,
-        "person_id": 2,
-        "available": false,
-        "created_at": "2023-05-26T17:09:50.000000Z",
-        "updated_at": "2023-05-26T20:37:34.000000Z"
+    {
+        "message": "The position has been modified.",
+        "position": {
+            "id": 6,
+            "role": "Executive manager",
+            "experience_required": 10,
+            "salary": 20000,
+            "company_id": 3,
+            "person_id": 2,
+            "available": false,
+            "created_at": "2023-05-26T17:09:50.000000Z",
+            "updated_at": "2023-05-26T20:37:34.000000Z"
+        }
     }
-}
 ```  
