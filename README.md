@@ -28,6 +28,7 @@ php artisan serve
 
 **Metodo:** POST 
 **Endpoint:** /api/companies 
+
 **Headers:**  
 
 | Key | Value |
